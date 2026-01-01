@@ -1,0 +1,436 @@
+@import '@fontsource/playfair-display/400.css';
+@import '@fontsource/playfair-display/500.css';
+@import '@fontsource/playfair-display/600.css';
+@import '@fontsource/playfair-display/700.css';
+@import '@fontsource/work-sans/300.css';
+@import '@fontsource/work-sans/400.css';
+@import '@fontsource/work-sans/500.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Fix for mobile viewport height issues */
+  html {
+    height: 100%;
+    height: -webkit-fill-available;
+  }
+  
+  body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+
+  :root {
+    /* BEENAS Premium Color Palette */
+    --background: 45 33% 97%;
+    --foreground: 30 15% 20%;
+
+    --card: 40 30% 98%;
+    --card-foreground: 30 15% 20%;
+
+    --popover: 40 30% 98%;
+    --popover-foreground: 30 15% 20%;
+
+    /* Warm brown primary */
+    --primary: 30 25% 35%;
+    --primary-foreground: 45 33% 97%;
+
+    /* Soft beige secondary */
+    --secondary: 35 25% 90%;
+    --secondary-foreground: 30 25% 35%;
+
+    /* Muted tones */
+    --muted: 35 20% 92%;
+    --muted-foreground: 30 10% 50%;
+
+    /* Rose accent */
+    --accent: 10 30% 75%;
+    --accent-foreground: 30 25% 25%;
+
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 45 33% 97%;
+
+    --border: 35 20% 88%;
+    --input: 35 20% 88%;
+    --ring: 30 25% 35%;
+
+    --radius: 0.25rem;
+
+    /* Custom BEENAS tokens */
+    --ivory: 45 33% 97%;
+    --cream: 40 30% 95%;
+    --beige: 35 25% 85%;
+    --sand: 35 20% 78%;
+    --taupe: 30 15% 55%;
+    --brown: 30 25% 35%;
+    --espresso: 30 30% 22%;
+    --rose: 10 30% 75%;
+    --blush: 10 25% 90%;
+    
+    /* Typography */
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(30 25% 35% / 0.08);
+    --shadow-medium: 0 8px 30px -6px hsl(30 25% 35% / 0.12);
+    --shadow-product: 0 12px 40px -8px hsl(30 25% 35% / 0.15);
+
+      /* Transitions - Optimized for smooth animations */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-ultra-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* Sidebar (keeping default structure) */
+    --sidebar-background: 40 30% 98%;
+    --sidebar-foreground: 30 15% 20%;
+    --sidebar-primary: 30 25% 35%;
+    --sidebar-primary-foreground: 45 33% 97%;
+    --sidebar-accent: 35 25% 90%;
+    --sidebar-accent-foreground: 30 25% 35%;
+    --sidebar-border: 35 20% 88%;
+    --sidebar-ring: 30 25% 35%;
+  }
+
+  .dark {
+    --background: 30 20% 8%;
+    --foreground: 40 25% 92%;
+
+    --card: 30 18% 12%;
+    --card-foreground: 40 25% 92%;
+
+    --popover: 30 18% 12%;
+    --popover-foreground: 40 25% 92%;
+
+    --primary: 40 25% 85%;
+    --primary-foreground: 30 20% 8%;
+
+    --secondary: 30 15% 18%;
+    --secondary-foreground: 40 25% 85%;
+
+    --muted: 30 15% 18%;
+    --muted-foreground: 35 15% 55%;
+
+    --accent: 10 25% 45%;
+    --accent-foreground: 40 25% 92%;
+
+    --destructive: 0 55% 45%;
+    --destructive-foreground: 40 25% 92%;
+
+    --border: 30 15% 20%;
+    --input: 30 15% 20%;
+    --ring: 40 25% 85%;
+
+    --sidebar-background: 30 18% 10%;
+    --sidebar-foreground: 40 25% 92%;
+    --sidebar-primary: 40 25% 85%;
+    --sidebar-primary-foreground: 30 20% 8%;
+    --sidebar-accent: 30 15% 18%;
+    --sidebar-accent-foreground: 40 25% 85%;
+    --sidebar-border: 30 15% 20%;
+    --sidebar-ring: 40 25% 85%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    @apply font-medium tracking-tight;
+  }
+}
+
+@layer components {
+  /* Premium button variants */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-brown/90 transition-all duration-300;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-beige transition-all duration-300;
+  }
+
+  .btn-outline {
+    @apply border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300;
+  }
+
+  .btn-ghost {
+    @apply text-foreground hover:bg-secondary transition-all duration-300;
+  }
+
+  /* Link hover effect */
+  .link-underline {
+    @apply relative inline-block;
+  }
+
+  .link-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-px bg-current origin-right scale-x-0 transition-transform duration-300;
+  }
+
+  .link-underline:hover::after {
+    @apply origin-left scale-x-100;
+  }
+
+  /* Product card styles */
+  .product-card {
+    @apply bg-card rounded-sm overflow-hidden transition-all duration-500;
+  }
+
+  .product-card:hover {
+    box-shadow: var(--shadow-product);
+  }
+
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-muted rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-taupe/40 rounded-full hover:bg-taupe/60;
+  }
+
+  /* Tag styles */
+  .tag-bestseller {
+    @apply inline-block px-2.5 py-0.5 text-xs font-medium tracking-wider uppercase bg-rose text-espresso rounded-sm;
+  }
+
+  .tag-new {
+    @apply inline-block px-2.5 py-0.5 text-xs font-medium tracking-wider uppercase bg-cream text-brown border border-sand rounded-sm;
+  }
+}
+
+@layer utilities {
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Performance optimizations for smooth animations */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  .smooth-transition {
+    transition: all var(--transition-ultra-smooth);
+  }
+  
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8 xl:px-12;
+  }
+  
+  .container-padding-wide {
+    @apply px-4 sm:px-6 lg:px-12 xl:px-16;
+  }
+  
+  /* Responsive typography utilities */
+  .text-display-large {
+    @apply text-4xl sm:text-5xl lg:text-6xl xl:text-7xl;
+  }
+  
+  .text-display-medium {
+    @apply text-3xl sm:text-4xl lg:text-5xl;
+  }
+  
+  .text-display-small {
+    @apply text-2xl sm:text-3xl lg:text-4xl;
+  }
+  
+  .text-heading-large {
+    @apply text-xl sm:text-2xl lg:text-3xl;
+  }
+  
+  .text-heading-medium {
+    @apply text-lg sm:text-xl lg:text-2xl;
+  }
+  
+  .text-body-large {
+    @apply text-base sm:text-lg;
+  }
+  
+  /* Responsive spacing utilities */
+  .section-padding-y {
+    @apply py-12 sm:py-16 lg:py-20 xl:py-24;
+  }
+  
+  .section-padding-y-small {
+    @apply py-8 sm:py-12 lg:py-16;
+  }
+  
+  .section-gap {
+    @apply gap-6 sm:gap-8 lg:gap-12;
+  }
+  
+  .section-gap-small {
+    @apply gap-4 sm:gap-6 lg:gap-8;
+  }
+  
+  /* Responsive grid utilities */
+  .grid-responsive-2 {
+    @apply grid grid-cols-1 sm:grid-cols-2;
+  }
+  
+  .grid-responsive-3 {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6;
+  }
+  
+  .grid-responsive-4 {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6;
+  }
+  
+  .grid-responsive-products {
+    @apply grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5;
+  }
+
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.4s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Delay utilities for staggered animations */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+}
+/* Mobile viewport height utilities */
+@layer utilities {
+  .min-h-screen-mobile {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+  
+  .h-screen-mobile {
+    height: 100vh;
+    height: -webkit-fill-available;
+  }
+  
+  /* Safe area utilities for mobile */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  /* Fix for mobile modal positioning - more aggressive approach */
+  .modal-mobile-fix {
+    max-height: 95vh;
+    max-height: calc(var(--vh, 1vh) * 95);
+    max-height: calc(100vh - 40px);
+  }
+  
+  @media (max-width: 768px) {
+    .modal-mobile-fix {
+      max-height: 95vh;
+      max-height: calc(var(--vh, 1vh) * 95);
+      max-height: calc(100vh - 40px);
+      height: auto;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .modal-mobile-fix {
+      max-height: 95vh;
+      max-height: calc(var(--vh, 1vh) * 95);
+      max-height: calc(100vh - 40px);
+      height: auto;
+    }
+  }
+  
+  /* Ensure modal content is always scrollable */
+  .modal-content-scroll {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Simplified mobile modal fixes */
+  @media (max-width: 640px) {
+    .modal-mobile-fix {
+      width: 98vw !important;
+      max-width: 98vw !important;
+      max-height: 95vh !important;
+      height: auto !important;
+      margin: 1vw !important;
+    }
+  }
+  
+  /* Mobile-specific modal positioning */
+  @supports (-webkit-touch-callout: none) {
+    /* iOS Safari specific */
+    .modal-mobile-fix {
+      max-height: calc(100vh - 40px);
+      max-height: calc(var(--vh, 1vh) * 100 - 40px);
+    }
+    
+    @media (max-width: 768px) {
+      .modal-mobile-fix {
+        max-height: calc(100vh - 40px);
+        max-height: calc(var(--vh, 1vh) * 100 - 40px);
+      }
+    }
+  }
+}
