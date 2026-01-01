@@ -21,6 +21,7 @@ import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import AdminDashboard from "./pages/AdminDashboard";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -28,21 +29,24 @@ const AppContent = () => {
   useViewportHeight(); // Handle mobile viewport height globally
   
   return (
-    <Routes>
-      <Route path="/" element={<Index />} />
-      <Route path="/shop" element={<Shop />} />
-      <Route path="/collections" element={<Collections />} />
-      <Route path="/collection/:collectionId" element={<CollectionDetail />} />
-      <Route path="/product/:id" element={<ProductDetail />} />
-      <Route path="/folder/:id" element={<FolderProductDetail />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="/checkout" element={<Checkout />} />
-      <Route path="/account" element={<Account />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/admin" element={<AdminDashboard />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/collections" element={<Collections />} />
+        <Route path="/collection/:collectionId" element={<CollectionDetail />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/folder/:id" element={<FolderProductDetail />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/account" element={<Account />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
   );
 };
 
